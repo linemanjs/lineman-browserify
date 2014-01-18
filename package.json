@@ -1,0 +1,33 @@
+{
+  "name": "lineman-browserify",
+  "title": "A Browserify plugin for Lineman",
+  "version": "0.0.1",
+  "homepage": "https://github.com/testdouble/lineman-browserify",
+  "author": {
+    "name": "David Mosher",
+    "company": "Test Double"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/testdouble/lineman-browserify.git"
+  },
+  "main": "main.js",
+  "dependencies": {
+    "coffee-script": "~1.6.3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "browserify": "~3.20.0",
+    "grunt-browserify": "~1.3.0",
+    "coffeeify": "~0.5.2"
+  },
+  "peerDependencies": {
+    "lineman": ">= 0.23.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mit-license.org"
+    }
+  ]
+}
