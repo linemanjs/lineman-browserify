@@ -2,14 +2,14 @@
   "name": "lineman-browserify",
   "title": "A Browserify plugin for Lineman",
   "version": "0.0.2",
-  "homepage": "https://github.com/testdouble/lineman-browserify",
+  "homepage": "https://github.com/linemanjs/lineman-browserify",
   "author": {
     "name": "David Mosher",
     "company": "Test Double"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/testdouble/lineman-browserify.git"
+    "url": "git://github.com/linemanjs/lineman-browserify.git"
   },
   "main": "main.js",
   "dependencies": {
