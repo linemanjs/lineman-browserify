@@ -17,4 +17,4 @@ module.exports = (lineman) ->
           "generated/js/browserifyBundle.coffee.js" : "<%= files.coffee.entrypoint %>"
         options:
           debug: true
-          transform: ["coffeify"]
+          transform: ["coffeeify"]
