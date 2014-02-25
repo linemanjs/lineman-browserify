@@ -1,6 +1,6 @@
 {
   "name": "lineman-browserify",
-  "title": "A Browserify plugin for Lineman",
+  "description": "A Browserify plugin for Lineman",
   "version": "0.0.3",
   "homepage": "https://github.com/linemanjs/lineman-browserify",
   "author": {
