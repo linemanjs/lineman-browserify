@@ -19,6 +19,7 @@
     "coffeeify": "~0.5.2"
   },
   "devDependencies": {
+    "grunt": "~0.4.2",
     "grunt-release": "~0.7.0"
   },
   "licenses": [
