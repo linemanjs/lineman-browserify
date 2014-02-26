@@ -1,7 +1,7 @@
 {
   "name": "lineman-browserify",
   "description": "A Browserify plugin for Lineman",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/linemanjs/lineman-browserify",
   "author": {
     "name": "David Mosher",
