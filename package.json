@@ -11,7 +11,6 @@
     "type": "git",
     "url": "git://github.com/linemanjs/lineman-browserify.git"
   },
-  "main": "main.js",
   "peerDependencies": {
     "lineman": ">= 0.23.0",
     "coffee-script": "~1.6.3",
