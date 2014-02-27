@@ -23,7 +23,7 @@ module.exports = (lineman) ->
 
       spec:
         files:
-          "<%= files.browserify.generated %>": ["<%= files.js.spec %>", "<%= files.coffee.spec %>"]
+          "<%= files.browserify.generatedSpec %>": ["<%= files.js.spec %>", "<%= files.coffee.spec %>"]
         options:
           debug: false
           extensions: [".js", ".coffee"]
