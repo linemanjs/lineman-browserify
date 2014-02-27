@@ -1,20 +1,49 @@
 module.exports = (lineman) ->
+  app = lineman.config.application
+
   config:
-    loadNpmTasks: lineman.config.application.loadNpmTasks.concat("grunt-browserify")
+    loadNpmTasks: app.loadNpmTasks.concat("grunt-browserify")
 
     prependTasks:
-      common: ["browserify"].concat(lineman.config.application.prependTasks.common)
+      common: ["browserify"].concat(app.prependTasks.common)
 
     browserify:
-      app_js:
+      common:
         files:
-          "generated/js/browserifyBundle.js" : "<%= files.js.browserifyBundle %>"
+          "<%= files.browserify.generated %>": "<%= files.browserify.entrypoint %>"
         options:
-          debug: true
-
-      app_coffee:
-        files:
-          "generated/js/browserifyBundle.coffee.js" : "<%= files.coffee.browserifyBundle %>"
-        options:
-          debug: true
+          debug: false
+          extensions: [".js", ".coffee"]
           transform: ["coffeeify"]
+          aliasMappings: [
+            cwd: "vendor/js"
+            src: "**/*.{js,coffee}"
+            dest: ""
+          ]
+
+      spec:
+        files:
+          "<%= files.browserify.generatedSpec %>": ["<%= files.js.spec %>", "<%= files.coffee.spec %>"]
+        options:
+          debug: false
+          extensions: [".js", ".coffee"]
+          transform: ["coffeeify"]
+          aliasMappings: [
+              cwd: "vendor/js"
+              src: "**/*.{js,coffee}"
+              dest: ""
+            ,
+              cwd: "app/js"
+              src: "**/*.{js,coffee}"
+              dest: ""
+          ]
+
+    watch:
+      browserify:
+        files: ["<%= files.js.vendor %>", "<%= files.js.app %>", "<%= files.coffee.app %>"]
+        tasks: ["browserify:common", "concat_sourcemap:js"]
+
+      browserifySpecs:
+        files: ["<%= files.js.specHelpers %>", "<%= files.js.spec %>", "<%= files.coffee.specHelpers %>", "<%= files.coffee.spec %>"]
+        tasks: ["browserify:spec", "concat_sourcemap:js"]
+
