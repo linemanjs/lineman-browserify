@@ -11,29 +11,6 @@ First, add the plugin to your lineman project:
 $ npm install lineman-browserify --save-dev
 ```
 
-Next, you'll want to add the browserify entry points to `config/files.js`. The plugin supports a javascript _or_ coffeescript entrypoint named "browserifyBundle"
+The plugin will create a default entrypoint that agrees with the vanilla lineman project archetype (which prints a little hello world on the screen). If you've installed the plugin into a vanilla project, you should see the demo continue to work, but otherwise you'll want to start by replacing the contents of `app/js/entrypoint.coffee` with whatever `require` statements you need to kick off your app. You can also rename this file to a ".js" extension if you like.
 
-
-```
-module.exports = function(lineman) {
-  return {
-    js: {
-      browserifyBundle: "app/js/entrypoint.js"
-    },
-
-    // or
-
-    coffee: {
-      browserifyBundle: "app/js/entrypoint.coffee"
-    }
-  };
-};
-```
-
-lineman-browserify configures concat_sourcemap to concatenate the 2 files that grunt-browserify emits:
-
-- "generated/js/browserifyBundle.js"
-- "generated/js/browserifyBundle.coffee.js"
-
-Now, when you run `lineman run` and visit [localhost:8000](http://localhost:8000),
-you should see Browserify compile the modules, and emit js and coffee sourcemaps in the browser.
+If you want to pull in a file from `vendor/js`, just require it; the aliases have been set up such that you can treat `vendor/js` as just a second root load path for the application.
