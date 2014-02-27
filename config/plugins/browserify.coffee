@@ -16,9 +16,13 @@ module.exports = (lineman) ->
           extensions: [".js", ".coffee"]
           transform: ["coffeeify"]
           aliasMappings: [
-            cwd: "vendor/js"
-            src: "**/*.{js,coffee}"
-            dest: ""
+              cwd: "vendor/js"
+              src: "**/*.{js,coffee}"
+              dest: ""
+            ,
+              cwd: "app/js"
+              src: "**/*.{js,coffee}"
+              dest: ""
           ]
 
       spec:
@@ -34,6 +38,10 @@ module.exports = (lineman) ->
               dest: ""
             ,
               cwd: "app/js"
+              src: "**/*.{js,coffee}"
+              dest: ""
+            ,
+              cwd: "spec"
               src: "**/*.{js,coffee}"
               dest: ""
           ]
