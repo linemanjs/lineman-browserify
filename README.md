@@ -11,18 +11,20 @@ First, add the plugin to your lineman project:
 $ npm install lineman-browserify --save-dev
 ```
 
-Next, you'll want to add the browserify entry points to `config/files.js`. The plugin supports a javascript and/or coffeescript entrypoint.
+Next, you'll want to add the browserify entry points to `config/files.js`. The plugin supports a javascript _or_ coffeescript entrypoint named "browserifyBundle"
 
 
 ```
 module.exports = function(lineman) {
   return {
     js: {
-      entrypoint: "app/js/entrypoint.js"
+      browserifyBundle: "app/js/entrypoint.js"
     },
 
+    // or
+
     coffee: {
-      entrypoint: "app/js/entrypoint.coffee"
+      browserifyBundle: "app/js/entrypoint.coffee"
     }
   };
 };
