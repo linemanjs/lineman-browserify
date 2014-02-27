@@ -9,3 +9,7 @@ module.exports = (lineman) ->
       coffee:
         files: []
         tasks: []
+
+      coffeeSpecs:
+        files: []
+        tasks: []
