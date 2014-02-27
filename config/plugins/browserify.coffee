@@ -15,6 +15,11 @@ module.exports = (lineman) ->
           debug: false
           extensions: [".js", ".coffee"]
           transform: ["coffeeify"]
+          aliasMappings: [
+            cwd: "vendor/js"
+            src: "**/*.{js,coffee}"
+            dest: ""
+          ]
 
     watch:
       browserify:
