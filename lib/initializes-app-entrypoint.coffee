@@ -9,6 +9,7 @@ module.exports =
     fs.writeFileSync dest, """
                            window._ = require("underscore")
                            require("./hello")
+
                            """
 
 findTopPackageJson = (dir) ->
