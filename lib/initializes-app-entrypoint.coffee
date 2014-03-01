@@ -1,3 +1,4 @@
+chdir = require('chdir')
 findsRoot = require('find-root-package')
 grunt = require('lineman').grunt
 minimatch = require('minimatch')
@@ -8,9 +9,8 @@ module.exports =
     topDir = findsRoot.findTopPackageJson(dir)
     return unless isInstalledAsDependency(dir, topDir)
 
-    process.chdir topDir
-    new EntryPoint(topDir).ensureExists()
-    process.chdir dir
+    chdir topDir, ->
+      new EntryPoint(topDir).ensureExists()
 
 
 isInstalledAsDependency = (dir, topDir) ->
