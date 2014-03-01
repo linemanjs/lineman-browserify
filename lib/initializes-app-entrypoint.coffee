@@ -23,19 +23,19 @@ class EntryPoint
 
   ensureExists: ->
     if @exists(@configuredPattern)
-      console.log "Entry point file '#{@configuredPattern}' already exists; skipping..."
+      console.log "Entry point file '#{@configuredPattern}' already exists; nothing to do..."
 
-    else if @configuredPatternIsDefault()
-      console.log("Writing a default entry point file '#{@default}' into '#{@projectDir}'")
+    else if @isDefaultConfiguration()
+      console.log "Writing a default entry point file '#{@default}' into '#{@projectDir}'"
       grunt.file.write @default, @contents
 
     else
       console.warn "Entry point configured as '#{@configuredPattern}' but no file exists"
 
   exists: (pattern) ->
-    !!grunt.file.expand(pattern).length
+    !! grunt.file.expand(pattern).length
 
-  configuredPatternIsDefault: ->
+  isDefaultConfiguration: ->
     minimatch(@default, @configuredPattern)
 
   contents: """
