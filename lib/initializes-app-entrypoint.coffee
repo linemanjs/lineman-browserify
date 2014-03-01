@@ -7,7 +7,10 @@ module.exports =
   initialize: (dir = process.cwd()) ->
     topDir = findsRoot.findTopPackageJson(dir)
     return unless isInstalledAsDependency(dir, topDir)
+
+    process.chdir topDir
     new EntryPoint(topDir).ensureExists()
+    process.chdir dir
 
 
 isInstalledAsDependency = (dir, topDir) ->
@@ -25,7 +28,6 @@ class EntryPoint
             """
 
   constructor: (@projectDir) ->
-    process.chdir @projectDir
     @configuredPattern = sh.exec("lineman config --process files.browserify.entrypoint").stdout.replace(/\s*$/,'')
 
   ensureExists: ->
