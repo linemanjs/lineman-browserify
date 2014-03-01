@@ -1,7 +1,7 @@
 fs = require('fs')
 sh = require('execSync')
-glob = require('glob')
 findsRoot = require('find-root-package')
+grunt = require('lineman').grunt
 
 module.exports =
   initialize: (dir = process.cwd()) ->
@@ -27,7 +27,7 @@ class EntryPoint
       fs.writeFileSync @default, @contents
 
   exists: (pattern) ->
-    !!glob.sync(pattern).length
+    !!grunt.file.expand(pattern).length
 
   contents: """
             window._ = require("underscore")

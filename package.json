@@ -19,7 +19,6 @@
     "underscore": "~1.6.0",
     "coffee-script": "~1.6.3",
     "find-root-package": "0.0.1",
-    "glob": "~3.2.9",
     "execSync": "~1.0.1-pre"
   },
   "peerDependencies": {
