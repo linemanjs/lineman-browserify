@@ -1,7 +1,6 @@
-fs = require('fs')
-sh = require('execSync')
 findsRoot = require('find-root-package')
 grunt = require('lineman').grunt
+sh = require('execSync')
 
 module.exports =
   initialize: (dir = process.cwd()) ->
@@ -24,7 +23,7 @@ class EntryPoint
   ensureExists: ->
     unless @exists(@configuredPattern)
       console.log("Writing a default '#{@default}' file into '#{@projectDir}'")
-      fs.writeFileSync @default, @contents
+      grunt.file.write @default, @contents
 
   exists: (pattern) ->
     !!grunt.file.expand(pattern).length
