@@ -16,10 +16,17 @@ isInstalledAsDependency = (dir, topDir) ->
 
 class EntryPoint
 
-  constructor: (@projectDir, name='entrypoint') ->
+  default: "app/js/entrypoint.coffee"
+
+  contents: """
+            window._ = require("underscore")
+            require("./hello")
+
+            """
+
+  constructor: (@projectDir) ->
     process.chdir @projectDir
     @configuredPattern = sh.exec("lineman config --process files.browserify.entrypoint").stdout.replace(/\s*$/,'')
-    @default = "app/js/#{name}.coffee"
 
   ensureExists: ->
     if @exists(@configuredPattern)
@@ -37,9 +44,3 @@ class EntryPoint
 
   isDefaultConfiguration: ->
     minimatch(@default, @configuredPattern)
-
-  contents: """
-            window._ = require("underscore")
-            require("./hello")
-
-            """
