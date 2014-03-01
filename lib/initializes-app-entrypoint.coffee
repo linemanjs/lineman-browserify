@@ -18,7 +18,7 @@ class EntryPoint
 
   constructor: (@projectDir, name='entrypoint') ->
     process.chdir @projectDir
-    @configuredPattern = sh.exec("lineman config --process files.browserify.entrypoint").stdout
+    @configuredPattern = sh.exec("lineman config --process files.browserify.entrypoint").stdout.replace(/\s*$/,'')
     @default = "app/js/#{name}.coffee"
 
   ensureExists: ->
