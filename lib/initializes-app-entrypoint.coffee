@@ -1,5 +1,4 @@
 fs = require('fs')
-path = require('path')
 sh = require('execSync')
 glob = require('glob')
 findsRoot = require('find-root-package')
@@ -18,16 +17,17 @@ isInstalledAsDependency = (dir, topDir) ->
 class EntryPoint
 
   constructor: (@projectDir, name='entrypoint') ->
-    @pattern = sh.exec("cd #{@projectDir} && lineman config --process files.browserify.entrypoint").stdout
-    @coffee = "app/js/#{name}.coffee"
+    process.chdir @projectDir
+    @configuredPattern = sh.exec("lineman config --process files.browserify.entrypoint").stdout
+    @default = "app/js/#{name}.coffee"
 
   ensureExists: ->
-    unless @exists()
-      console.log("Writing a default '#{@coffee}' file into '#{@projectDir}'")
-      fs.writeFileSync path.join(@projectDir, @coffee), @contents
+    unless @exists(@configuredPattern)
+      console.log("Writing a default '#{@default}' file into '#{@projectDir}'")
+      fs.writeFileSync @default, @contents
 
-  exists: ->
-    !!glob.sync(path.join(@projectDir, @pattern)).length
+  exists: (pattern) ->
+    !!glob.sync(pattern).length
 
   contents: """
             window._ = require("underscore")
