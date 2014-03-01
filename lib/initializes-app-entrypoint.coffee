@@ -1,5 +1,6 @@
 findsRoot = require('find-root-package')
 grunt = require('lineman').grunt
+minimatch = require('minimatch')
 sh = require('execSync')
 
 module.exports =
@@ -24,9 +25,12 @@ class EntryPoint
     if @exists(@configuredPattern)
       console.log "Entry point file '#{@configuredPattern}' already exists; skipping..."
 
-    else
+    else if minimatch(@default, @configuredPattern)
       console.log("Writing a default entry point file '#{@default}' into '#{@projectDir}'")
       grunt.file.write @default, @contents
+
+    else
+      console.warn "Entry point configured as '#{@configuredPattern}' but no file exists"
 
   exists: (pattern) ->
     !!grunt.file.expand(pattern).length
