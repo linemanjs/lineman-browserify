@@ -21,8 +21,11 @@ class EntryPoint
     @default = "app/js/#{name}.coffee"
 
   ensureExists: ->
-    unless @exists(@configuredPattern)
-      console.log("Writing a default '#{@default}' file into '#{@projectDir}'")
+    if @exists(@configuredPattern)
+      console.log "Entry point file '#{@configuredPattern}' already exists; skipping..."
+
+    else
+      console.log("Writing a default entry point file '#{@default}' into '#{@projectDir}'")
       grunt.file.write @default, @contents
 
   exists: (pattern) ->
