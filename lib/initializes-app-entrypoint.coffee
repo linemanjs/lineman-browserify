@@ -25,7 +25,7 @@ class EntryPoint
     if @exists(@configuredPattern)
       console.log "Entry point file '#{@configuredPattern}' already exists; skipping..."
 
-    else if minimatch(@default, @configuredPattern)
+    else if @configuredPatternIsDefault()
       console.log("Writing a default entry point file '#{@default}' into '#{@projectDir}'")
       grunt.file.write @default, @contents
 
@@ -34,6 +34,9 @@ class EntryPoint
 
   exists: (pattern) ->
     !!grunt.file.expand(pattern).length
+
+  configuredPatternIsDefault: ->
+    minimatch(@default, @configuredPattern)
 
   contents: """
             window._ = require("underscore")
