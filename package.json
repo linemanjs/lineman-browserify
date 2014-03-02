@@ -3,10 +3,7 @@
   "description": "A Browserify plugin for Lineman",
   "version": "0.1.1",
   "homepage": "https://github.com/linemanjs/lineman-browserify",
-  "author": {
-    "name": "David Mosher",
-    "company": "Test Double"
-  },
+  "author": "David Mosher",
   "repository": {
     "type": "git",
     "url": "git://github.com/linemanjs/lineman-browserify.git"
