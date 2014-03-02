@@ -34,5 +34,14 @@
       "type": "MIT",
       "url": "http://testdouble.mit-license.org"
     }
+  ],
+  "keywords": [
+    "lineman",
+    "linemanplugin",
+    "browserify",
+    "browser",
+    "require",
+    "modules",
+    "commonjs"
   ]
 }
