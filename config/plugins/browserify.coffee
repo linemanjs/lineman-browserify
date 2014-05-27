@@ -53,5 +53,5 @@ module.exports = (lineman) ->
 
       browserifySpecs:
         files: ["<%= files.js.specHelpers %>", "<%= files.js.spec %>", "<%= files.coffee.specHelpers %>", "<%= files.coffee.spec %>"]
-        tasks: ["browserify:spec", "concat_sourcemap:js"]
+        tasks: ["browserify:spec", "concat_sourcemap:spec"]
 
